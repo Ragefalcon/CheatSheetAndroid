@@ -1,0 +1,16 @@
+CREATE TABLE MainLog (
+     _id INTEGER PRIMARY KEY AUTOINCREMENT,
+    date INTEGER NOT NULL,
+    tag TEXT NOT NULL,
+    log_text TEXT NOT NULL,
+    comment TEXT NOT NULL
+);
+
+selectByTag:
+SELECT * FROM MainLog WHERE tag IN :tags;
+
+addNewLog:
+INSERT OR REPLACE INTO MainLog(date, tag, log_text, comment) VALUES (:date, :tag, :log_text, :comment);
+
+clearLogByTag:
+DELETE FROM MainLog WHERE tag IN :tag;
